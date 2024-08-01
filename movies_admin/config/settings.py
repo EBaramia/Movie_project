@@ -19,6 +19,8 @@ include(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOCALE_PATHS = ['movies/locale']
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
