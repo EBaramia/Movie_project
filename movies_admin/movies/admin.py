@@ -28,6 +28,6 @@ class PersonFilmworkInline(admin.TabularInline):
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     inlines = (PersonFilmworkInline,) 
-    list_display = ('full_name', 'gender')
-    list_filter = ('gender',)
-    search_fields = ('full_name', 'gender')
+    list_display = ('full_name',)
+    list_filter = ('full_name',)
+    search_fields = ('full_name',)

@@ -42,7 +42,6 @@ class Type(models.TextChoices):
 
 
 class Filmwork(UUIDMixin, TimeStampedMixin):
-    certificate = models.CharField(_('certificate'), max_length=512, blank=True)
     title=models.TextField(_('title'), max_length=225, blank=False) 
     description=models.TextField(_('description'), blank=True)
     creation_date=models.DateField(_('created time'), blank=True)
@@ -53,8 +52,6 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
         validators= [MinValueValidator(0), MaxValueValidator(100)]
         )
     type=models.CharField('type', choices=Type.choices, blank=False)
-    genres = models.ManyToManyField(Genre, through='GenreFilmwork')
-    file_path = models.FileField(_('file'), blank=True, null=True, upload_to='movies/')
 
     def __str__(self):
         return self.title
@@ -76,14 +73,8 @@ class GenreFilmwork(UUIDMixin):
         verbose_name_plural = 'Жанры'
 
 
-class Gender(models.TextChoices):
-    MALE = 'mail', _('male')
-    FEMALE = 'female', _('femail')
-
-
 class Person(UUIDMixin, TimeStampedMixin):
     full_name = models.CharField(_('full name'), max_length=225, blank=False)
-    gender = models.TextField(_('gender'), choices=Gender.choices, null=True)
 
     def __str__(self):
         return self.full_name

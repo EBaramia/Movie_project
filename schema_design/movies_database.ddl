@@ -1,20 +1,3 @@
-
--- Creating new database on docker
-
--- use -sudo docker run -d \ if you using linux
-docker run -d \
-  --name postgres \
-  -p 5432:5432 \
-  -v $HOME/postgresql/data:/var/lib/postgresql/data \
-  -e POSTGRES_PASSWORD=123qwe \
-  -e POSTGRES_USER=app \
-  -e POSTGRES_DB=movies_database  \
-  postgres:16
-
-
-
--- Creating a new scheme
-
 CREATE SCHEMA content;
 
 
