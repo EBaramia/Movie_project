@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS content.film_work (
     title TEXT NOT NULL,
     description TEXT,
     creation_date DATE,
-    rating FLOAT check(rating >= 0 and rating <=0),
+    rating FLOAT check(rating >= 0 and rating <=100),
     type TEXT not null,
     created timestamp with time zone,
     modified timestamp with time zone
@@ -29,7 +29,9 @@ create table if not exists content.person_film_work (
     created timestamp with time zone,
 
     foreign key (person_id) references content.person(id),
-    foreign key (film_work_id) references content.film_work(id)
+    foreign key (film_work_id) references content.film_work(id),
+
+    constraint unique_person_film_role unique (film_work_id, person_id, role)
 );
 
 create table if not exists content.genre (
@@ -47,7 +49,9 @@ create table if not exists content.genre_film_work (
     created timestamp with time zone,
 
     foreign key (genre_id) references content.genre(id),
-    foreign key (film_work_id) references content.film_work(id)
+    foreign key (film_work_id) references content.film_work(id),
+
+    constraint unique_film_work_genre unique (film_work_id, genre_id)
 );
 
 
