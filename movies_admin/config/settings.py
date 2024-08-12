@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from split_settings.tools import optional, include
 
 import os
+from .components.debug_flag import DEBUG
 
 
 load_dotenv()
@@ -22,8 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 LOCALE_PATHS = ['movies/locale']
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-
-DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
