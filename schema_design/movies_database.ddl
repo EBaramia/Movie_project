@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS content.film_work (
     title TEXT NOT NULL,
     description TEXT,
     creation_date DATE,
-    rating FLOAT,
+    rating FLOAT check(rating >= 0 and rating <=0),
     type TEXT not null,
     created timestamp with time zone,
     modified timestamp with time zone
