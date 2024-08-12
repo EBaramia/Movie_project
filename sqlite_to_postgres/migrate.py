@@ -1,3 +1,4 @@
+import logging
 from sqlite_utils import fetch_data_from_sqlite
 from postgres_utils import save_data_to_postgres
 from models import FilmWork, Person, Genre, PersonFilmWork, GenreFilmWork
@@ -13,9 +14,9 @@ def migrate_all_tables():
     }
 
     for table_name, table_class in tables_classes.items():
-        print(f"Fetching data from {table_name}...")
+        logging.info(f"Fetching data from {table_name}...")
         data = fetch_data_from_sqlite(table_name, table_class)
-        print(f"Saving data to {table_name}..")
+        logging.info(f"Saving data to {table_name}..")
         save_data_to_postgres(data, table_name)
 
 
