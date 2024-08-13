@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-01 12:14+0000\n"
+"POT-Creation-Date: 2024-08-13 09:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,50 +22,62 @@ msgstr ""
 msgid "Movies"
 msgstr ""
 
-#: movies/models.py:27
+#: movies/models.py:9
 msgid "name"
 msgstr ""
 
-#: movies/models.py:28 movies/models.py:47
+#: movies/models.py:10 movies/models.py:29
 msgid "description"
 msgstr ""
 
-#: movies/models.py:45
-msgid "certificate"
-msgstr ""
-
-#: movies/models.py:46
+#: movies/models.py:28
 msgid "title"
 msgstr ""
 
-#: movies/models.py:48
+#: movies/models.py:30
 msgid "created time"
 msgstr ""
 
-#: movies/models.py:50
+#: movies/models.py:32
 msgid "rating"
 msgstr ""
 
-#: movies/models.py:57
-msgid "file"
-msgstr ""
-
-#: movies/models.py:80
-msgid "male"
-msgstr ""
-
-#: movies/models.py:81
-msgid "femail"
-msgstr ""
-
-#: movies/models.py:85
+#: movies/models.py:60
 msgid "full name"
 msgstr ""
 
-#: movies/models.py:86
-msgid "gender"
+#: movies/models.py:74
+msgid "Director"
 msgstr ""
 
-#: movies/models.py:100
+#: movies/models.py:75
+msgid "Screenwriter"
+msgstr ""
+
+#: movies/models.py:76
+msgid "Actor"
+msgstr ""
+
+#: movies/models.py:77
+msgid "Composer"
+msgstr ""
+
+#: movies/models.py:78
+msgid "Cinematographer"
+msgstr ""
+
+#: movies/models.py:79
+msgid "Editor"
+msgstr ""
+
+#: movies/models.py:80
+msgid "Voice Actor"
+msgstr ""
+
+#: movies/models.py:81
+msgid "Dubbing Actor"
+msgstr ""
+
+#: movies/models.py:85
 msgid "role"
 msgstr ""

@@ -18,12 +18,13 @@ class Genre(UUIDMixin, TimeStampedMixin):
         verbose_name_plural = 'Жанры'
 
 
-class Type(models.TextChoices):
-    MOVIE = 'movie', 'Movie'
-    TV_SHOW = 'tv_show', 'Tv Show'
-
-
 class Filmwork(UUIDMixin, TimeStampedMixin):
+
+    class Type(models.TextChoices):
+        MOVIE = 'movie', 'Movie'
+        TV_SHOW = 'tv_show', 'Tv Show'
+
+
     title=models.TextField(_('title'), max_length=225, blank=False) 
     description=models.TextField(_('description'), blank=True)
     creation_date=models.DateField(_('created time'), blank=True)
@@ -54,6 +55,16 @@ class GenreFilmwork(UUIDMixin):
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
 
+        indexes = [
+            models.Index(fields=['film_work', 'genre'])
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['film_work', 'genre'],
+                name='unique_filmwork_genre'
+            ),
+        ]
+
 
 class Person(UUIDMixin, TimeStampedMixin):
     full_name = models.CharField(_('full name'), max_length=225, blank=False)
@@ -68,10 +79,31 @@ class Person(UUIDMixin, TimeStampedMixin):
 
 
 class PersonFilmwork(UUIDMixin):
+
+    class PesonRole(models.TextChoices):
+        DIRECTOR = 'director', _('Director')
+        SCREENWRITER = 'screenwriter', _('Screenwriter')
+        ACTOR = 'actor', _('Actor')
+        COMPOSER = 'composer', _('Composer')
+        CINEMATOGRAPHER = 'cinematographer', _('Cinematographer')
+        EDITOR = 'editor', _('Editor')
+        VOICE_ACTOR = 'voice_actor', _('Voice Actor')
+        DUBBING_ACTOR = 'dubbing_actor', _('Dubbing Actor')
+
     film_work=models.ForeignKey('Filmwork', on_delete=models.CASCADE)
     person = models.ForeignKey('Person', on_delete=models.CASCADE)
-    role = models.TextField(_('role'))
+    role = models.TextField(_('role'), choices=PesonRole.choices, default=PesonRole.ACTOR)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = "content\".\"person_film_work"
+
+        indexes = [
+            models.Index(fields=['film_work', 'person']),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['film_work', 'person', 'role'],
+                name='unique_person_filmwork_role'
+            ),
+        ]

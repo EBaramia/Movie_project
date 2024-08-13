@@ -31,6 +31,8 @@ create table if not exists content.person_film_work (
     foreign key (person_id) references content.person(id),
     foreign key (film_work_id) references content.film_work(id),
 
+--Ограничение функциональнее индекса
+
     constraint unique_person_film_role unique (film_work_id, person_id, role)
 );
 
@@ -50,6 +52,8 @@ create table if not exists content.genre_film_work (
 
     foreign key (genre_id) references content.genre(id),
     foreign key (film_work_id) references content.film_work(id),
+
+--Ограничение функциональнее индекса
 
     constraint unique_film_work_genre unique (film_work_id, genre_id)
 );
